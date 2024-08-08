@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { PrincipalComponent } from './principal.component';
-
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -9,7 +9,11 @@ import { PrincipalComponent } from './principal.component';
     PrincipalComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
+  ],
+  exports: [
+    PrincipalComponent
   ]
 })
 export class PrincipalModule { }
