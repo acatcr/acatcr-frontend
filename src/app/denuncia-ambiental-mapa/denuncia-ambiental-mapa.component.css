@@ -1,0 +1,13 @@
+.mapa-contenedor {
+    position: relative;
+    margin: 30px;
+}
+  
+.mapa-marco {
+  border: 2px solid black;
+  height: 100%;
+}
+
+#mapa {
+  height: 500px;
+}

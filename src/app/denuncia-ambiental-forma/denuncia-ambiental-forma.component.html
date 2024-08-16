@@ -41,11 +41,47 @@
   </div>
 
   <div class="row mb-3">
+    <div class="col">
+      <label class="form-label">Área Silvestre Protegida</label>
+      <input class="form-control" type="text" formControlName="nombreAsp" />
+      @if (formaDenunciaAmbiental.get('nombreAsp')?.invalid && formaDenunciaAmbiental.get('nombreAsp')?.touched) {
+          <small class="text-danger">El Área Silvestre Protegida es obligatoria.</small>
+      }
+    </div>
+  
+    <div class="col">
+      <label class="form-label">Sector</label>
+      <input class="form-control" type="text" formControlName="nombreSector" />
+      @if (formaDenunciaAmbiental.get('nombreSector')?.invalid && formaDenunciaAmbiental.get('nombreSector')?.touched) {
+          <small class="text-danger">El sector es obligatorio.</small>
+      }
+    </div>
+  </div>  
+
+  <div class="row mb-3">
+    <div class="col-6">
+      <label class="form-label">Nombre del funcionario responsable</label>
+      <input class="form-control" type="text" formControlName="nombreFuncionarioResponsable" />
+      @if (formaDenunciaAmbiental.get('nombreFuncionarioResponsable')?.invalid && formaDenunciaAmbiental.get('nombreFuncionarioResponsable')?.touched) {
+          <small class="text-danger">El nombre del funcionario es obligatorio.</small>
+      }
+    </div>
+  </div>
+
+  <div class="row mb-3">
     <div class="col-6">
       <label class="form-label">Fecha de la infracción</label>
       <input class="form-control" type="date" formControlName="fechaInfraccion" />
       @if (formaDenunciaAmbiental.get('fechaInfraccion')?.invalid && formaDenunciaAmbiental.get('fechaInfraccion')?.touched) {
           <small class="text-danger">La fecha de la infracción es obligatoria.</small>
+      }
+    </div>
+
+    <div class="col-6">
+      <label class="form-label">Nombre del imputado</label>
+      <input class="form-control" type="text" formControlName="nombreImputado" />
+      @if (formaDenunciaAmbiental.get('nombreImputado')?.invalid && formaDenunciaAmbiental.get('nombreImputado')?.touched) {
+          <small class="text-danger">El nombre del imputado es obligatorio.</small>
       }
     </div>
   </div>

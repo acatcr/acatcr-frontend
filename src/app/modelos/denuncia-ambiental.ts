@@ -4,5 +4,9 @@ export interface DenunciaAmbiental {
     informePolicialId: string,    
     coordenadaX: number,
     coordenadaY: number,
-    fechaInfraccion: Date
+    nombreAsp: string,
+    nombreSector: string,
+    nombreFuncionarioResponsable: string,    
+    fechaInfraccion: Date,
+    nombreImputado: string
 }

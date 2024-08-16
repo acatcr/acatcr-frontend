@@ -1,0 +1,31 @@
+<app-principal />
+
+<hr>
+
+<h4 class="mt-2 mb-2 text-center">Gráficos de denuncias ambientales</h4>
+
+<ngx-charts-bar-vertical
+  [view]="view"
+  [results]="data"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel"
+  [yAxisLabel]="yAxisLabel">
+</ngx-charts-bar-vertical>
+
+<ngx-charts-bar-vertical
+  [view]="view"
+  [results]="data2"
+  [gradient]="gradient"
+  [xAxis]="showXAxis"
+  [yAxis]="showYAxis"
+  [legend]="showLegend"
+  [showXAxisLabel]="showXAxisLabel"
+  [showYAxisLabel]="showYAxisLabel"
+  [xAxisLabel]="xAxisLabel2"
+  [yAxisLabel]="yAxisLabel">
+</ngx-charts-bar-vertical>

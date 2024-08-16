@@ -28,7 +28,11 @@ export class DenunciaAmbientalFormaComponent implements OnInit {
       informePolicialId: ['', Validators.required],
       coordenadaX: ['', Validators.required],
       coordenadaY: ['', Validators.required],
+      nombreAsp: ['', Validators.required],
+      nombreSector: ['', Validators.required],
+      nombreFuncionarioResponsable: ['', Validators.required],
       fechaInfraccion: ['', Validators.required],
+      nombreImputado: ['', Validators.required],
     });
 
     // Se extrae el id del registro del URL

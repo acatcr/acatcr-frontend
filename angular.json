@@ -73,6 +73,9 @@
             },
             "development": {
               "buildTarget": "acatcr-frontend:build:development"
+            },
+            "options": {
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"
