@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 
-import { PrincipalModule } from '../principal/principal.module';
+import { MenuPrincipalModule } from '../menu-principal/menu-principal.module';
 import { DenunciaAmbientalFormaComponent } from '../denuncia-ambiental-forma/denuncia-ambiental-forma.component';
 import { DenunciaAmbientalListaComponent } from '../denuncia-ambiental-lista/denuncia-ambiental-lista.component';
 import { DenunciaAmbientalMapaComponent } from '../denuncia-ambiental-mapa/denuncia-ambiental-mapa.component';
@@ -11,7 +11,8 @@ import { DenunciaAmbientalMapaComponent } from '../denuncia-ambiental-mapa/denun
 import { HttpClientModule } from '@angular/common/http';
 import { DenunciaAmbientalGraficoComponent } from '../denuncia-ambiental-grafico/denuncia-ambiental-grafico.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-
+import { MatTableModule } from '@angular/material/table';
+import {MatCardModule} from '@angular/material/card';
 
 
 @NgModule({
@@ -26,9 +27,11 @@ import { NgxChartsModule } from '@swimlane/ngx-charts';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
-    PrincipalModule,
+    MenuPrincipalModule,
     HttpClientModule,
-    NgxChartsModule
+    NgxChartsModule,
+    MatTableModule,
+    MatCardModule
   ]
 })
 export class DenunciaAmbientalModule { }

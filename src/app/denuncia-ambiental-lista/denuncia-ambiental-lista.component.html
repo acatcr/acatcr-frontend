@@ -1,48 +1,60 @@
-<app-principal />
+<app-menu-principal></app-menu-principal>
 
-<hr>
-<h4 class="mt-2 mb-2 text-center">Lista de denuncias ambientales</h4>
+<h4 class="mt-2 mb-4 text-center">Lista de denuncias ambientales</h4>
 
 <table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Número en Sitada</th>
-            <th>Número de informe policial</th>
-            <th>Coordenada x</th>
-            <th>Coordenada y</th>
-            <th>ASP</th>
-            <th>Sector</th>
-            <th>Funcionario responsable</th>            
-            <th>Fecha de la infracción</th>
-            <th>Imputado</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @for(denunciaAmbiental of denunciasAmbientales; track denunciaAmbiental.id) {
-            <tr>
-                <td>{{ denunciaAmbiental.sitadaId }}</td>
-                <td>{{ denunciaAmbiental.informePolicialId }}</td>
-                <td>{{ denunciaAmbiental.coordenadaX }}</td>
-                <td>{{ denunciaAmbiental.coordenadaY }}</td>
-                <td>{{ denunciaAmbiental.nombreAsp }}</td>
-                <td>{{ denunciaAmbiental.nombreSector }}</td>
-                <td>{{ denunciaAmbiental.nombreImputado }}</td>
-                <td>{{ denunciaAmbiental.fechaInfraccion }}</td>
-                <td>{{ denunciaAmbiental.nombreFuncionarioResponsable }}</td>
-                <td>
-                    <button class="btn btn-sm btn-danger mx-1" (click)="borrarDenunciaAmbiental(denunciaAmbiental.id)">Borrar</button>
-                    <button class="btn btn-sm btn-secondary mx-1" [routerLink]="['/editar', denunciaAmbiental.id]">Editar</button>
-                </td>
-            </tr>
-        }
-    </tbody>
+  <thead>
+    <tr>
+      <th>Número en Sitada</th>
+      <th>Número de informe policial</th>
+      <th>Coordenada x</th>
+      <th>Coordenada y</th>
+      <th>ASP</th>
+      <th>Sector</th>
+      <th>Funcionario responsable</th>
+      <th>Fecha de la infracción</th>
+      <th>Imputado</th>
+      <th>Tipo de delito</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    @for(denunciaAmbiental of denunciasAmbientales; track denunciaAmbiental.id)
+    {
+    <tr>
+      <td>{{ denunciaAmbiental.sitadaId }}</td>
+      <td>{{ denunciaAmbiental.informePolicialId }}</td>
+      <td>{{ denunciaAmbiental.coordenadaX }}</td>
+      <td>{{ denunciaAmbiental.coordenadaY }}</td>
+      <td>{{ denunciaAmbiental.nombreAsp }}</td>
+      <td>{{ denunciaAmbiental.nombreSector }}</td>
+      <td>{{ denunciaAmbiental.nombreFuncionarioResponsable }}</td>
+      <td>{{ denunciaAmbiental.fechaInfraccion }}</td>
+      <td>{{ denunciaAmbiental.nombreImputado }}</td>      
+      <td>{{ denunciaAmbiental.tipoDelito }}</td>
+      <td>
+        <button
+          class="btn btn-sm btn-danger mx-1"
+          (click)="borrarDenunciaAmbiental(denunciaAmbiental.id)"
+        >
+          Borrar
+        </button>
+        <button
+          class="btn btn-sm btn-secondary mx-1"
+          [routerLink]="['/editar', denunciaAmbiental.id]"
+        >
+          Editar
+        </button>
+      </td>
+    </tr>
+    }
+  </tbody>
 </table>
 
 @if (denunciasAmbientales.length) {
-    <ul>
-
-    </ul>
+<ul></ul>
 } @else {
-    <p>No hay denuncias ambientales.</p>
-}
+<p>No hay denuncias ambientales.</p>
+} 
+
+

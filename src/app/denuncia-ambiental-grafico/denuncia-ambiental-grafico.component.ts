@@ -9,8 +9,10 @@ import { DenunciaAmbiental } from '../modelos/denuncia-ambiental';
 })
 export class DenunciaAmbientalGraficoComponent implements OnInit {
   denunciasAmbientales: DenunciaAmbiental[] = [];
+
   data: any[] = [];
   data2: any[] = [];
+  data3: any[] = [];
 
   view: [number, number] = [700, 400];
 
@@ -28,6 +30,10 @@ export class DenunciaAmbientalGraficoComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
+  // Opciones del gráfico de pastel
+  showLabels = true;
+  isDoughnut = false;  
+
   constructor(private servicioDenunciaAmbiental: DenunciaAmbientalService) {}
 
   ngOnInit(): void {
@@ -36,6 +42,7 @@ export class DenunciaAmbientalGraficoComponent implements OnInit {
 
     this.generarDatosGrafico();
     this.generarDatosGrafico2();
+    this.generarDatosGrafico3();
   }
 
   generarDatosGrafico(): void {
@@ -71,6 +78,24 @@ export class DenunciaAmbientalGraficoComponent implements OnInit {
     this.data2 = Object.keys(conteoPorSector).map((nombreSector) => ({
       name: nombreSector,
       value: conteoPorSector[nombreSector],
+    }));
+  }  
+
+  generarDatosGrafico3(): void {
+    const conteoPorDelito: { [key: string]: number } = {};
+
+    this.denunciasAmbientales.forEach((denuncia) => {
+      const tipoDelito = denuncia.tipoDelito || 'Desconocido';
+      if (conteoPorDelito[tipoDelito]) {
+        conteoPorDelito[tipoDelito]++;
+      } else {
+        conteoPorDelito[tipoDelito] = 1;
+      }
+    });
+
+    this.data3 = Object.keys(conteoPorDelito).map((tipoDelito) => ({
+      name: tipoDelito,
+      value: conteoPorDelito[tipoDelito],
     }));
   }  
 }

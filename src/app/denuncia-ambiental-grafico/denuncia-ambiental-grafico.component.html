@@ -1,31 +1,47 @@
-<app-principal />
+<app-menu-principal></app-menu-principal>
 
-<hr>
+<h4 class="mt-2 mb-4 text-center">Gráficos de denuncias ambientales</h4>
 
-<h4 class="mt-2 mb-2 text-center">Gráficos de denuncias ambientales</h4>
+<div class="row">
+  <div class="col-md-6">
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [results]="data"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel">
+    </ngx-charts-bar-vertical>
+  </div>
+  <div class="col-md-6">
+    <ngx-charts-bar-vertical
+      [view]="view"
+      [results]="data2"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="xAxisLabel2"
+      [yAxisLabel]="yAxisLabel">
+    </ngx-charts-bar-vertical>
+  </div>
+</div>
 
-<ngx-charts-bar-vertical
-  [view]="view"
-  [results]="data"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel"
-  [yAxisLabel]="yAxisLabel">
-</ngx-charts-bar-vertical>
-
-<ngx-charts-bar-vertical
-  [view]="view"
-  [results]="data2"
-  [gradient]="gradient"
-  [xAxis]="showXAxis"
-  [yAxis]="showYAxis"
-  [legend]="showLegend"
-  [showXAxisLabel]="showXAxisLabel"
-  [showYAxisLabel]="showYAxisLabel"
-  [xAxisLabel]="xAxisLabel2"
-  [yAxisLabel]="yAxisLabel">
-</ngx-charts-bar-vertical>
+<div class="row mt-4">
+  <div class="col-md-12">
+    <ngx-charts-pie-chart
+      [view]="view"
+      [results]="data3"
+      [gradient]="gradient"
+      [legend]="showLegend"
+      [labels]="showLabels"
+      [doughnut]="isDoughnut">
+    </ngx-charts-pie-chart>
+  </div>
+</div>

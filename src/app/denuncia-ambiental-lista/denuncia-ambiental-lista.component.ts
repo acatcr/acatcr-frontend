@@ -12,6 +12,7 @@ import { DenunciaAmbientalService } from '../denuncia-ambiental/denuncia-ambient
 export class DenunciaAmbientalListaComponent implements OnInit {
   denunciasAmbientales: DenunciaAmbiental[] = [];
 
+  
   constructor(private servicioDenunciaAmbiental: DenunciaAmbientalService) {
   }
 

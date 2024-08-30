@@ -8,5 +8,6 @@ export interface DenunciaAmbiental {
     nombreSector: string,
     nombreFuncionarioResponsable: string,    
     fechaInfraccion: Date,
-    nombreImputado: string
+    nombreImputado: string,
+    tipoDelito: string
 }

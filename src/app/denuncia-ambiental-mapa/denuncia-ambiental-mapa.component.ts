@@ -75,7 +75,7 @@ export class DenunciaAmbientalMapaComponent implements OnInit {
     this.http.get('acat.geojson').subscribe((datos: any) => {
       const capaAcat = L.geoJSON(datos, {
         style: function (feature) {
-          return { color: 'orange', weight: 2, fillOpacity: 0.0 };
+          return { color: 'orange', weight: 4, fillOpacity: 0.0 };
         },
         onEachFeature: function (feature, layer) {
           var popupText =
@@ -105,10 +105,32 @@ export class DenunciaAmbientalMapaComponent implements OnInit {
             feature.properties.estatus;
           layer.bindPopup(popupText);
         },
-      }).addTo(mapa);
+      });
 
       controlCapas.addOverlay(capaAcatAsp, 'ASP');
     });
+
+    this.http.get('acat-humedales.geojson').subscribe((datos: any) => {
+      const capaAcatHumedales = L.geoJSON(datos, {
+        style: function (feature) {
+          return { color: 'darkblue', weight: 2, fillOpacity: 0.0 };
+        },
+        onEachFeature: function (feature, layer) {
+          var popupText =
+            '<strong>Humedal</strong>: ' +
+            feature.properties.nom_hum +
+            '<br>' +
+            '<strong>Clase</strong>: ' +
+            feature.properties.clase_hum +            
+            '<br>' +
+            '<strong>Tipo</strong>: ' +
+            feature.properties.tipo_hum;
+          layer.bindPopup(popupText);
+        },
+      });
+
+      controlCapas.addOverlay(capaAcatHumedales, 'Humedales');
+    });    
 
     this.http.get('acat-cb.geojson').subscribe((datos: any) => {
       const capaAcatCb = L.geoJSON(datos, {
@@ -121,10 +143,29 @@ export class DenunciaAmbientalMapaComponent implements OnInit {
             feature.properties.nombre_cb;
           layer.bindPopup(popupText);
         },
-      }).addTo(mapa);
+      });
 
       controlCapas.addOverlay(capaAcatCb, 'Corredores biológicos');
     });
+
+    this.http.get('acat-pne.geojson').subscribe((datos: any) => {
+      const capaAcatPne = L.geoJSON(datos, {
+        style: function (feature) {
+          return { color: 'black', weight: 2, fillOpacity: 0.0 };
+        },
+        onEachFeature: function (feature, layer) {
+          var popupText =
+            '<strong>Finca</strong>: ' +
+            feature.properties.n_finca +
+            '<br>' +
+            '<strong>Propietario</strong>: ' +
+            feature.properties.propiet;
+          layer.bindPopup(popupText);
+        },
+      });
+
+      controlCapas.addOverlay(capaAcatPne, 'Patrimono Natural del Estado');
+    });        
 
     this.http
       .get('acat-cobertura-forestal-2023.geojson')
@@ -167,7 +208,7 @@ export class DenunciaAmbientalMapaComponent implements OnInit {
               feature.properties.Clase;
             layer.bindPopup(popupText);
           },
-        }).addTo(mapa);
+        });
 
         controlCapas.addOverlay(capaAcatCf2023, 'Cobertura forestal 2023');
       });

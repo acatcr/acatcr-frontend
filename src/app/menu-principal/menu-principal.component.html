@@ -1,0 +1,82 @@
+<mat-toolbar color="secondary">
+    <mat-toolbar-row>
+      <button mat-icon-button [routerLink]="''">
+        <mat-icon>home</mat-icon>
+      </button>
+      <span>ACAT</span>
+  
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Denuncias ambientales menu"
+      >
+        Denuncias ambientales
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+  
+      <!-- Menú desplegable -->
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item [routerLink]="'/nuevo'">
+          <mat-icon>create</mat-icon>
+          <span>Creación</span>
+        </button>
+        <button mat-menu-item [routerLink]="'/lista'">
+          <mat-icon>list</mat-icon>
+          <span>Lista</span>
+        </button>
+        <button mat-menu-item [routerLink]="'/mapa'">
+          <mat-icon>map</mat-icon>
+          <span>Mapa</span>
+        </button>
+        <button mat-menu-item [routerLink]="'/grafico'">
+          <mat-icon>bar_chart</mat-icon>
+          <span>Gráficos</span>
+        </button>
+      </mat-menu>
+
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Patrullajes menu"
+      >
+        Patrullajes
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Operativos especiales menu"
+      >
+        Operativos especiales
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Traslocaciones menu"
+      >
+        Traslocaciones
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Incidentes menu"
+      >
+        Incidentes
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>
+
+      <button
+        mat-button
+        [matMenuTriggerFor]="menu"
+        aria-label="Incidentes menu"
+      >
+        Inspecciones
+        <mat-icon>arrow_drop_down</mat-icon>
+      </button>      
+    </mat-toolbar-row>
+  </mat-toolbar>
