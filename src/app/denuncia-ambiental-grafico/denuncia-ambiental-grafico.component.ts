@@ -13,14 +13,17 @@ export class DenunciaAmbientalGraficoComponent implements OnInit {
   data: any[] = [];
   data2: any[] = [];
   data3: any[] = [];
+  groupedData: any[] = [];
+  groupedData2: any[] = [];
 
-  view: [number, number] = [700, 400];
+  view: [number, number] = [1200, 400];
 
   // Opciones del gráfico
   showXAxis = true;
   showYAxis = true;
   gradient = false;
   showLegend = true;
+  legendTitle = 'Leyenda';
   showXAxisLabel = true;
   xAxisLabel = 'Áreas Silvestres Protegidas';
   xAxisLabel2 = 'Sectores';
@@ -42,7 +45,8 @@ export class DenunciaAmbientalGraficoComponent implements OnInit {
 
     this.generarDatosGrafico();
     this.generarDatosGrafico2();
-    this.generarDatosGrafico3();
+    this.generarDatosGraficoDenunciasXASPSector();
+    this.generarDatosGraficoDenunciasXTipoDenunciaTipoInfraccion();
   }
 
   generarDatosGrafico(): void {
@@ -81,21 +85,70 @@ export class DenunciaAmbientalGraficoComponent implements OnInit {
     }));
   }  
 
-  generarDatosGrafico3(): void {
-    const conteoPorDelito: { [key: string]: number } = {};
+  generarDatosGraficoDenunciasXASPSector(): void {
+    const agrupadoPorAspSector: { [key: string]: { [key: string]: number } } = {};
 
     this.denunciasAmbientales.forEach((denuncia) => {
-      const tipoDelito = denuncia.tipoDelito || 'Desconocido';
-      if (conteoPorDelito[tipoDelito]) {
-        conteoPorDelito[tipoDelito]++;
+      const nombreAsp = denuncia.nombreAsp || 'Desconocido';
+      const nombreSector = denuncia.nombreSector || 'Desconocido';
+
+      if (!agrupadoPorAspSector[nombreAsp]) {
+        agrupadoPorAspSector[nombreAsp] = {};
+      }
+
+      if (agrupadoPorAspSector[nombreAsp][nombreSector]) {
+        agrupadoPorAspSector[nombreAsp][nombreSector]++;
       } else {
-        conteoPorDelito[tipoDelito] = 1;
+        agrupadoPorAspSector[nombreAsp][nombreSector] = 1;
       }
     });
 
-    this.data3 = Object.keys(conteoPorDelito).map((tipoDelito) => ({
-      name: tipoDelito,
-      value: conteoPorDelito[tipoDelito],
-    }));
-  }  
+    this.groupedData = Object.keys(agrupadoPorAspSector).map((nombreAsp) => {
+      const sectores = Object.keys(agrupadoPorAspSector[nombreAsp]).map(
+        (nombreSector) => ({
+          name: nombreSector,
+          value: agrupadoPorAspSector[nombreAsp][nombreSector],
+        })
+      );
+
+      return {
+        name: nombreAsp,
+        series: sectores,
+      };
+    });
+  }
+
+  generarDatosGraficoDenunciasXTipoDenunciaTipoInfraccion(): void {
+    const agrupadoXTipoDenunciaTipoInfraccion: { [key: string]: { [key: string]: number } } = {};
+
+    this.denunciasAmbientales.forEach((denuncia) => {
+      const nombreTipoDenuncia = denuncia.nombreTipoDenuncia || 'Desconocido';
+      const nombreTipoInfraccion = denuncia.nombreTipoInfraccion || 'Desconocido';
+
+      if (!agrupadoXTipoDenunciaTipoInfraccion[nombreTipoDenuncia]) {
+        agrupadoXTipoDenunciaTipoInfraccion[nombreTipoDenuncia] = {};
+      }
+
+      if (agrupadoXTipoDenunciaTipoInfraccion[nombreTipoDenuncia][nombreTipoInfraccion]) {
+        agrupadoXTipoDenunciaTipoInfraccion[nombreTipoDenuncia][nombreTipoInfraccion]++;
+      } else {
+        agrupadoXTipoDenunciaTipoInfraccion[nombreTipoDenuncia][nombreTipoInfraccion] = 1;
+      }
+    });
+
+    this.groupedData2 = Object.keys(agrupadoXTipoDenunciaTipoInfraccion).map((nombreTipoDenuncia) => {
+      const nombresTipoInfraccion = Object.keys(agrupadoXTipoDenunciaTipoInfraccion[nombreTipoDenuncia]).map(
+        (nombreTipoInfraccion) => ({
+          name: nombreTipoInfraccion,
+          value: agrupadoXTipoDenunciaTipoInfraccion[nombreTipoDenuncia][nombreTipoInfraccion],
+        })
+      );
+
+      return {
+        name: nombreTipoDenuncia,
+        series: nombresTipoInfraccion,
+      };
+    });
+  } 
 }
+

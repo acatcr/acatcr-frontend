@@ -2,7 +2,7 @@
 
 <h4 class="mt-2 mb-4 text-center">Gráficos de denuncias ambientales</h4>
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-md-6">
     <ngx-charts-bar-vertical
       [view]="view"
@@ -43,5 +43,41 @@
       [labels]="showLabels"
       [doughnut]="isDoughnut">
     </ngx-charts-pie-chart>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-md-12">
+    <ngx-charts-bar-vertical-2d
+      [view]="view"
+      [results]="groupedData"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [legendTitle]="'Sector'"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="'Área Silvestre Protegida'"
+      [yAxisLabel]="yAxisLabel">
+    </ngx-charts-bar-vertical-2d>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <ngx-charts-bar-vertical-2d
+      [view]="view"
+      [results]="groupedData2"
+      [gradient]="gradient"
+      [xAxis]="showXAxis"
+      [yAxis]="showYAxis"
+      [legend]="showLegend"
+      [legendTitle]="'Tipo de infracción'"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [xAxisLabel]="'Tipo de denuncia'"
+      [yAxisLabel]="yAxisLabel">
+    </ngx-charts-bar-vertical-2d>
   </div>
 </div>

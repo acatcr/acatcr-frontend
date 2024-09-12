@@ -43,8 +43,8 @@
     <div class="row mb-3">
       <div class="col">
         <label class="form-label">Área Silvestre Protegida</label>
-        <select class="form-control" formControlName="nombreAsp">
-          <option *ngFor="let asp of asps" [value]="asp">{{ asp }}</option>
+        <select class="form-control" formControlName="nombreAsp" (change)="onAspChange($event)">
+          <option *ngFor="let asp of lista_asp" [value]="asp">{{ asp }}</option>
         </select>
         @if (formaDenunciaAmbiental.get('nombreAsp')?.invalid && formaDenunciaAmbiental.get('nombreAsp')?.touched) {
             <small class="text-danger">El Área Silvestre Protegida es obligatoria.</small>
@@ -53,12 +53,14 @@
     
       <div class="col">
         <label class="form-label">Sector</label>
-        <input class="form-control" type="text" formControlName="nombreSector" />
+        <select class="form-control" formControlName="nombreSector">
+          <option *ngFor="let sector of sectoresFiltrados" [value]="sector">{{ sector }}</option>
+        </select>
         @if (formaDenunciaAmbiental.get('nombreSector')?.invalid && formaDenunciaAmbiental.get('nombreSector')?.touched) {
             <small class="text-danger">El sector es obligatorio.</small>
         }
       </div>
-    </div>  
+    </div>
   
     <div class="row mb-3">
       <div class="col-6">
@@ -89,15 +91,35 @@
     </div>
   
     <div class="row mb-3">
-      <div class="col-6">
-        <label class="form-label">Tipo de delito</label>
-        <select class="form-control" formControlName="tipoDelito">
-          <option *ngFor="let delito of tiposDelito" [value]="delito">{{ delito }}</option>
+      <div class="col">
+        <label class="form-label">Tipo de denuncia</label>
+        <select class="form-control" formControlName="nombreTipoDenuncia" (change)="onNombreTipoDenunciaChange($event)">
+          <option *ngFor="let denuncia of nombresTipoDenuncia" [value]="denuncia">{{ denuncia }}</option>
         </select>
-        @if (formaDenunciaAmbiental.get('tipoDelito')?.invalid && formaDenunciaAmbiental.get('tipoDelito')?.touched) {
-            <small class="text-danger">El tipo de delito es obligatorio.</small>
+        @if (formaDenunciaAmbiental.get('nombreTipoDenuncia')?.invalid && formaDenunciaAmbiental.get('nombreTipoDenuncia')?.touched) {
+            <small class="text-danger">El tipo de denuncia es obligatorio.</small>
         }
       </div>
+
+<!--       <div class="col-6">
+        <label class="form-label">Nombre de infracción</label>
+        <input class="form-control" type="text" formControlName="nombreTipoInfraccion" />
+        @if (formaDenunciaAmbiental.get('nombreTipoInfraccion')?.invalid && formaDenunciaAmbiental.get('nombreTipoInfraccion')?.touched) {
+            <small class="text-danger">El tipo de infracción es obligatorio.</small>
+        }
+      </div> -->
+
+      <div class="col">
+        <label class="form-label">Nombre de infracción</label>
+        <select class="form-control" formControlName="nombreTipoInfraccion">
+          <option *ngFor="let infraccion of nombresTipoInfraccionFiltrados" [value]="infraccion">{{ infraccion }}</option>
+        </select>
+        @if (formaDenunciaAmbiental.get('nombreTipoInfraccion')?.invalid && formaDenunciaAmbiental.get('nombreTipoInfraccion')?.touched) {
+            <small class="text-danger">El tipo de infracción es obligatorio.</small>
+        }
+      </div>      
+
+
     </div>
 
     <button class="btn btn-primary" type="submit" [disabled]="formaDenunciaAmbiental.invalid">
