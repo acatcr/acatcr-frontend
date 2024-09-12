@@ -1,0 +1,21 @@
+.logo-img {
+    width: 90px;
+    height: 95px;
+  }
+  
+  mat-toolbar-row {
+    display: flex;
+    align-items: center;
+  }
+  
+  button[mat-button], 
+  button[mat-icon-button], 
+  span {
+    display: flex;
+    align-items: center;
+  }
+  
+  button[mat-button] {
+    margin-right: 20px;
+  }
+  
